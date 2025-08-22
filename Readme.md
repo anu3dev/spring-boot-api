@@ -10,26 +10,7 @@ Supports basic operations:
 
 ## Project Structure
 
-spring-boot-api/
-├── pom.xml
-├── src
-│ ├── main
-│ │ ├── java/com/learning/anu3dev
-│ │ │ ├── Application.java # Spring Boot main class
-│ │ │ ├── controller # REST controllers
-│ │ │ │ └── PollController.java
-│ │ │ ├── service # Business logic
-│ │ │ │ └── PollService.java
-│ │ │ ├── repository # Data access
-│ │ │ │ └── PollRepository.java
-│ │ │ └── model # Entities/DTOs
-│ │ │ 	└── Poll.java
-│ │ ├── resources
-│ │ ├── application.properties # Config (DB, ports)
-│ │ └── data.sql (optional) # Seed data
-│ └── test/java/com/example/polling
-│ └── PollControllerTest.java
-└── README.md
+spring-boot-api/ ├── pom.xml ├── src │ ├── main │ │ ├── java/com/learning/anu3dev │ │ │ ├── Application.java # Spring Boot main class │ │ │ ├── controller # REST controllers │ │ │ │ └── PollController.java │ │ │ ├── service # Business logic │ │ │ │ └── PollService.java │ │ │ ├── repository # Data access │ │ │ │ └── PollRepository.java │ │ │ └── model # Entities/DTOs │ │ │ └── Poll.java │ │ └── resources │ │ ├── application.properties # Config (DB, ports) │ │ └── data.sql # Seed data (optional) ├── test/java/com/learning/anu3dev │ └── PollControllerTest.java └── README.md
 
 ---
 
