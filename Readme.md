@@ -10,6 +10,7 @@ Supports basic operations:
 
 ## Project Structure
 
+```
 spring-boot-api/
 ├── pom.xml
 ├── src
@@ -30,6 +31,7 @@ spring-boot-api/
 │   └── test/java/com/learning/anu3dev
 │       └── PollControllerTest.java
 └── README.md
+```
 
 ---
 
