@@ -53,6 +53,7 @@ spring-boot-api/
 		- Tomcat (embedded) –> as the default web server
 		- Validation API –> for request validation
 		- Logging –> via SLF4J and Logback
+		
 	- `spring-boot-starter-test` -> used for unit testing, integration testing, and mocking
 	- It includes
 		- JUnit 5 -> Core testing framework
@@ -62,12 +63,14 @@ spring-boot-api/
 		- Hamcrest -> Matcher-based assertions
 		- JsonPath -> JSON content verification
 		- Spring Boot Test -> Utilities for Spring Boot-specific testing
+	
 	- `spring-boot-devtools` -> enabling features like automatic restarts, live reload, and better debugging support
 	- It includes
 		-  Automatic Restart -> Restarts the application when classpath files change (e.g., after saving a Java file).
 		- LiveReload -> Automatically refreshes the browser when static resources (HTML, CSS, JS) change.
 		- Enhanced Debugging -> Disables caching and enables detailed error pages for easier debugging.
 		Remote Debugging -> Allows remote devtools connection for cloud-hosted apps (disabled by default).
+	
 	- `spring-boot-starter-data-jpa` ->  simplify and streamline working with databases using JPA
 	- It includes
 		- Spring Data JPA –> abstraction over JPA
@@ -80,6 +83,7 @@ spring-boot-api/
 		- Use Spring Data repositories (CrudRepository, JpaRepository)
 		- Automatically configure Hibernate (the default JPA provider)
 		- Handle transactions and data access with minimal boilerplate
+	
 	- `lombok` -> educe boilerplate code in your classes, especially for POJOs (Plain Old Java Objects) like entities, DTOs, and models.
 		- It includes
 			- Automatically generates: `@Getter / @Setter`, `@ToString`, `@EqualsAndHashCode`, `@NoArgsConstructor`, `@AllArgsConstructor`, `@RequiredArgsConstructor`, @Builder for fluent object creation, @Data for a combination of common annotations
