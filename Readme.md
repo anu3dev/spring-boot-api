@@ -62,6 +62,8 @@ spring-boot-api/
     }
   ]
 }
+</details> 
+```
 
 ---
 
