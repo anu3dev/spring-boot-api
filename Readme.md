@@ -43,7 +43,25 @@ spring-boot-api/
 
 |Method|Path|Description|Sample response|
 |-----------|----------------|--------------------------------|----------|
-|GET|`/`|Just displays welcome message|"Hello, World!"|
+|GET|`/`|Just displays welcome message|
+<details><summary>Show Response</summary>
+
+```json
+{
+  "pollId": 1,
+  "pollTitle": "My Poll",
+  "active": true,
+  "questions": [
+    {
+      "question": "Your favorite color?",
+      "multiSelect": false,
+      "options": ["Red", "Blue", "Green"]
+    }
+  ]
+}
+```
+</details>
+
 |GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|
 <details><summary>Show Response</summary>
 
