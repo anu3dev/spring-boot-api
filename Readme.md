@@ -44,6 +44,7 @@ spring-boot-api/
 |Method|Path|Description|
 |-----------|----------------|--------------------------------|
 |GET|`/`|Just displays welcome message|
+|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|
 
 ---
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +24,10 @@ public class PollController {
 	@PostMapping("add-polls")
 	public ResponseEntity<List<Poll>> addPolls(@RequestBody List<PollRequest> request) {
 		return ResponseEntity.ok(pollService.saveOrUpdatePolls(request));
+	}
+	
+	@GetMapping("get-polls")
+	public ResponseEntity<List<Poll>> getPolls(){
+		return ResponseEntity.ok(pollService.getPolls());
 	}
 }

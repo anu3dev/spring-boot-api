@@ -66,4 +66,19 @@ public class PollService {
 
 		return savedPolls;
 	}
+	
+	public List<Poll> getPolls(){
+		List<Poll> activePolls = pollRepo.findAll()
+				.stream()
+				.filter(Poll::isActive)
+				.toList();
+		activePolls.forEach(poll -> {
+			List<PollQuestion> activeQuestions = poll.getQuestions()
+					.stream()
+					.filter(PollQuestion::isActive)
+					.toList();
+			poll.setQuestions(activeQuestions);
+		});
+		return activePolls ;
+	}
 }
