@@ -44,7 +44,7 @@ spring-boot-api/
 |Method|Path|Description|Sample response|
 |-----------|----------------|--------------------------------|----------|
 |GET|`/`|Just displays welcome message|"Hello, World!"|
-|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|  <pre>[
+|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|[
     {
         "id": 1,
         "createdAt": "2025-08-31T02:27:24.997408",
@@ -158,7 +158,7 @@ spring-boot-api/
         ],
         "active": true
     }
-] </pre> |
+]|
 
 ---
 
