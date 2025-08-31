@@ -23,8 +23,12 @@ spring-boot-api/
 │   │   │   │   └── PollService.java
 │   │   │   ├── repository               # Data access
 │   │   │   │   └── PollRepository.java
-│   │   │   └── model                    # Entities/DTOs
-│   │   │       └── Poll.java
+│   │   │   ├── model                    # Entities/DTOs
+│   │   │   │     └── Poll.java
+│   │   │   ├── dto					 #  Request/Response DTOs (API pay-loads)
+│   │   │   │	   └── CreatePolls.java
+│   │   │   ├── security				 # (optional) Security config, filters
+│   │   │   │     └── SecurityConfig.java
 │   │   └── resources
 │   │       ├── application.properties  # Config (DB, ports)
 │   │       └── data.sql                # Seed data (optional)
@@ -45,7 +49,7 @@ spring-boot-api/
 
 ## Learning
 
-- Dependencies-
+- Dependencies
 	- `spring-boot-starter-web` -> to build web applications and RESTful APIs
 	- It includes
 		- Spring MVC –> for building web applications and REST APIs
@@ -93,5 +97,51 @@ spring-boot-api/
 		
 	- `mysql-connector-j` -> official JDBC driver provided by MySQL to allow Java applications—including Spring Boot apps—to connect and interact with a MySQL database.
 	
+	- `postgresql` -> PostgreSQL JDBC driver as a runtime dependency
 	
-- 
+- Profile setup
+	- to create multiple profiles like for dev, IT, UAT, STAGE, PROD etc.
+	
+- Annotation
+	- `@SpringBootApplication`
+		- starting point of my app. Set up everything I need automatically and find my other classes.
+		- `@Configuration` –> Marks the class as a place where Spring can get instructions about how to create things (called beans).
+
+		- `@EnableAutoConfiguration` –> Spring Boot will look at what’s on your classpath (the libraries your project has) and automatically set up some things for you.
+
+		- `@ComponentScan` –> Spring looks in the package of this class (and subpackages) to find your controllers, services, repositories, etc.
+	
+	- `@RestController`
+		- this class will handle HTTP requests and give responses, usually in JSON format.
+		- `@Controller` -> Marks the class as a controller.
+		- `@ResponseBody` -> Automatically converts return values to JSON (or other formats) instead of rendering HTML.
+		
+	- `@RequestMapping`
+		- will handle requests to this URL (any type).
+		- `@GetMapping` -> handle GET requests to this URL (read-only).
+		- `@PostMapping` -> handle POST requests to this URL (send/submit data).
+		- `@PutMapping` -> update
+		- `@DeleteMapping` -> delete
+		
+	- `@Data`
+		- Getters for all fields
+		- Setters for all fields
+		- toString() method
+		- equals() and hashCode() methods
+		- Required constructors (like no-args constructor)
+		
+	- `@Entity`
+		- JPA (Java Persistence API) annotation used in Spring Boot to mark a class as a database table.
+		- POJO is a simple Java class with fields, getters, setters, and maybe a constructor. When you want a POJO to be stored in a database, we use @Entity 
+		- Works with Spring Data JPA to automatically handle saving, updating, deleting, and querying data.
+		- `@Id` -> Marks the primary key.
+		- `@GeneratedValue` -> Auto-generates ID values.
+		- `@Table` -> Custom name for the table
+		- `@Column` -> Custom name/settings for a column
+		- Relationships:
+			- `@OneToMany` -> 1 parent, many children
+			- `@ManyToOne` -> many children, 1 parent
+			- `@OneToOne` -> 1 to 1
+			- `@ManyToMany` -> multiple links on both sides
+			
+	- 

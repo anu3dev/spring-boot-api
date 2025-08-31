@@ -9,3 +9,12 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 }
+
+/**
+ * 
+ * Integer is 4 byte and Long is 8 byte.
+ * there is no fix size of string.
+ * 
+ * Spring automatically changes camelCase names into 
+ * snake_case for database tables and columns.
+ */
