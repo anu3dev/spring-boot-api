@@ -41,44 +41,16 @@ spring-boot-api/
 
 ## API list
 
-|Method|Path|Description|Sample response|
-|-----------|----------------|--------------------------------|----------|
-|GET|`/`|Just displays welcome message|
-<details><summary>Show Response</summary>
+# Poll API Documentation
 
-```json
-{
-  "pollId": 1,
-  "pollTitle": "My Poll",
-  "active": true,
-  "questions": [
-    {
-      "question": "Your favorite color?",
-      "multiSelect": false,
-      "options": ["Red", "Blue", "Green"]
-    }
-  ]
-}
-```
-</details>
-|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|
-<details><summary>Show Response</summary>
-
-```json
-{
-  "pollId": 1,
-  "pollTitle": "My Poll",
-  "active": true,
-  "questions": [
-    {
-      "question": "Your favorite color?",
-      "multiSelect": false,
-      "options": ["Red", "Blue", "Green"]
-    }
-  ]
-}
-```
-</details>
+| Method | Path | Description | Sample Response |
+|--------|------|-------------|----------------|
+| GET    | `/`  | Just displays welcome message | <details><summary>Show Response</summary><pre><code>{ "message": "Welcome to Poll API" }</code></pre></details> |
+| GET    | `/poll/get-polls` | Displays all polls with active status and questions with active status | <details><summary>Show Response</summary><pre><code>[ { "pollId": 1, "pollTitle": "My Poll", "active": true, "questions": [ { "question": "Your favorite color?", "multiSelect": false, "options": ["Red","Blue","Green"] } ] } ]</code></pre></details> |
+| POST   | `/poll/save` | Save a new poll or add questions/options to an existing poll | <details><summary>Show Response</summary><pre><code>{ "pollId": 3, "pollTitle": "New Poll", "active": true, "questions": [ { "question": "New question?", "multiSelect": false, "options": ["Option 1","Option 2"] } ] }</code></pre></details> |
+| DELETE | `/poll/{id}` | Delete a poll by ID | <details><summary>Show Response</summary><pre><code>{ "message": "Poll deleted successfully" }</code></pre></details> |
+| PATCH  | `/poll/{id}/inactive` | Mark a poll as inactive | <details><summary>Show Response</summary><pre><code>{ "message": "Poll marked as inactive" }</code></pre></details> |
+| PATCH  | `/poll/question/{id}/inactive` | Mark a specific question as inactive | <details><summary>Show Response</summary><pre><code>{ "message": "Question marked as inactive" }</code></pre></details> |
 
 ---
 
