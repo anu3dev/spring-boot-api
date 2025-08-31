@@ -44,9 +44,7 @@ spring-boot-api/
 |Method|Path|Description|Sample response|
 |-----------|----------------|--------------------------------|----------|
 |GET|`/`|Just displays welcome message|"Hello, World!"|
-|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|
-
-<details>
+|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|<details>
 <summary>Show Response</summary>
 
 ```json
@@ -64,8 +62,6 @@ spring-boot-api/
 }
 ```
 </details>
-
-|
 
 ---
 
