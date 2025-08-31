@@ -41,10 +41,124 @@ spring-boot-api/
 
 ## API list
 
-|Method|Path|Description|
-|-----------|----------------|--------------------------------|
-|GET|`/`|Just displays welcome message|
-|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|
+|Method|Path|Description|Sample response|
+|-----------|----------------|--------------------------------|----------|
+|GET|`/`|Just displays welcome message|"Hello, World!"|
+|GET|`/poll/get-polls`|displays all  polls with active status and polls will have questions with active status|`[
+    {
+        "id": 1,
+        "createdAt": "2025-08-31T02:27:24.997408",
+        "pollTitle": "About programming",
+        "questions": [
+            {
+                "id": 1,
+                "createdAt": "2025-08-31T02:27:24.997939",
+                "question": "Which programming language do you like the most?",
+                "options": [
+                    {
+                        "id": 1,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Java",
+                        "count": 0
+                    },
+                    {
+                        "id": 2,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Python",
+                        "count": 0
+                    },
+                    {
+                        "id": 3,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "JavaScript",
+                        "count": 0
+                    },
+                    {
+                        "id": 4,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Go",
+                        "count": 0
+                    },
+                    {
+                        "id": 5,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "C#",
+                        "count": 0
+                    }
+                ],
+                "active": true,
+                "multiSelect": false
+            },
+            {
+                "id": 2,
+                "createdAt": "2025-08-31T02:27:24.997939",
+                "question": "Which IDE do you like the most?",
+                "options": [
+                    {
+                        "id": 6,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "VSCode",
+                        "count": 0
+                    },
+                    {
+                        "id": 7,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "IntelliJ",
+                        "count": 0
+                    },
+                    {
+                        "id": 8,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Eclipse",
+                        "count": 0
+                    },
+                    {
+                        "id": 9,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Notepad++",
+                        "count": 0
+                    }
+                ],
+                "active": true,
+                "multiSelect": false
+            },
+            {
+                "id": 3,
+                "createdAt": "2025-08-31T02:27:24.997939",
+                "question": "Which courses you want?",
+                "options": [
+                    {
+                        "id": 10,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "Java",
+                        "count": 0
+                    },
+                    {
+                        "id": 11,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "React",
+                        "count": 0
+                    },
+                    {
+                        "id": 12,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": "TypeScript",
+                        "count": 0
+                    },
+                    {
+                        "id": 13,
+                        "createdAt": "2025-08-31T02:27:24.997939",
+                        "optionText": ".Net",
+                        "count": 0
+                    }
+                ],
+                "active": true,
+                "multiSelect": true
+            }
+        ],
+        "active": true
+    }
+]`|
 
 ---
 
