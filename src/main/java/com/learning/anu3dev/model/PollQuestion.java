@@ -40,8 +40,8 @@ public class PollQuestion {
 	@Column(name = "is_multi_select")
 	private boolean isMultiSelect;
 	
-	private String question;
+	private String questionTitle;
 	
-	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL,  orphanRemoval = true)
+	@OneToMany(mappedBy = "questionId", cascade = CascadeType.ALL,  orphanRemoval = true)
 	private List<QuestionOption> options = new ArrayList<>();
 }

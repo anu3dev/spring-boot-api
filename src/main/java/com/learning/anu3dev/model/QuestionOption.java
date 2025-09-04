@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.Data;
 
 @Entity
@@ -27,11 +28,15 @@ public class QuestionOption {
 	
 	@ManyToOne
 	@JsonIgnore
-    @JoinColumn(name = "question", nullable = false)
-	private PollQuestion question;
+    @JoinColumn(name = "question_id", nullable = false)
+	private PollQuestion questionId;
 	
 	@Column(name = "option_text")
 	private String optionText;
 	
+	@Version
+	private Long version;
+	
+	@Column(nullable = false)
 	private int count = 0;
 }

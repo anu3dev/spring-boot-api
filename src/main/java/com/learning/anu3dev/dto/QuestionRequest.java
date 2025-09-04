@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class QuestionRequest {
-	private String question;
+	private String questionTitle;
 	@JsonProperty("isActive")
     private boolean isActive;
 	@JsonProperty("isMultiSelect")

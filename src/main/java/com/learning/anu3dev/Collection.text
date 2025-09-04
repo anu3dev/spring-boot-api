@@ -1,0 +1,221 @@
+// add initial poll -> post -> /poll/add-polls
+// pollId is missing means it will create new poll
+// isActive is missing means poll won't be activated
+
+[
+    {
+        "isActive": "true",
+        "pollTitle": "About programming",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which programming language do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Java",
+                    "Python",
+                    "JavaScript",
+                    "Go",
+                    "C#"
+                    ]
+            },
+            {
+                "questionTitle": "Which IDE do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "VSCode",
+                    "IntelliJ",
+                    "Eclipse",
+                    "Notepad++"
+                    ]
+            },
+            {
+                "questionTitle": "Which courses you want?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Java",
+                    "React",
+                    "TypeScript",
+                    ".Net"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "",
+        "pollTitle": "About yourself",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    }
+]
+
+// add questions to existing poll -> post -> /poll/add-polls
+// pollId is present then will add questions against mentioned poll
+// if pollId is present and question is new then only questions will be added else it will be ignored
+// questions with null title value will be ignored
+
+[
+    {
+        "isActive": "true",
+        "pollTitle": "About programming",
+        "pollId" : 1,
+        "questions": [
+            {
+                "questionTitle": "Which programming language do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Java",
+                    "Python",
+                    "JavaScript",
+                    "Go",
+                    "C#"
+                    ]
+            },
+            {
+                "questionTitle": "Which IDE do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "VSCode",
+                    "IntelliJ",
+                    "Eclipse",
+                    "Notepad++"
+                    ]
+            },
+            {
+                "questionTitle": "Which courses you want?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Java",
+                    "React",
+                    "TypeScript",
+                    ".Net"
+                    ]
+            },
+            {
+                "questionTitle": "Your total experience?",
+                "isActive": false,
+                "isMultiSelect": false,
+                "options": [
+                    "0 - 2",
+                    "2 - 5",
+                    "5 - 10",
+                    "More than 10"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "true",
+        "pollTitle": "About yourself",
+        "pollId" : 2,
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    }
+]
+
+// add new poll -> post -> /poll/add-polls
+// Just add a poll without pollId, it will create new poll
+
+[
+    {
+        "isActive": "",
+        "pollTitle": "About yourself",
+        "pollId" : 2,
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "true",
+        "pollTitle": "Your food",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which food you like most?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Pizza",
+                    "Burger",
+                    "Paani puri",
+                    "Chaat"
+                    ]
+            }
+        ]
+    }
+]
+
+// get polls -> get -> /poll/get-polls
+// it will only return active polls with active question list
