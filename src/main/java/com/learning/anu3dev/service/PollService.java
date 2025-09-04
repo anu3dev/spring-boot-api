@@ -73,6 +73,10 @@ public class PollService {
 
 		return savedPolls;
 	}
+	
+	public List<Poll> getAllPolls() {
+		return pollRepo.findAll();
+	}
 
 	public List<Poll> getPolls() {
 		List<Poll> activePolls = pollRepo.findAll().stream().filter(Poll::isActive).toList();

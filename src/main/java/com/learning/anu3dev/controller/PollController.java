@@ -11,23 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learning.anu3dev.dto.PollRequest;
+import com.learning.anu3dev.dto.PollApiResponse;
 import com.learning.anu3dev.model.Poll;
 import com.learning.anu3dev.service.PollService;
 
 @RestController
 @RequestMapping("poll")
 public class PollController {
-	
+
 	@Autowired
 	private PollService pollService;
-	
-	@PostMapping("add-polls")
-	public ResponseEntity<List<Poll>> addPolls(@RequestBody List<PollRequest> request) {
-		return ResponseEntity.ok(pollService.saveOrUpdatePolls(request));
+
+	@PostMapping("/add-polls")
+	public ResponseEntity<List<PollApiResponse>> addPolls(@RequestBody List<PollRequest> request) {
+		pollService.saveOrUpdatePolls(request);
+		return ResponseEntity.ok(PollApiResponse.success("Action successful").asList());
+	}
+
+	@GetMapping("/get-all-polls")
+	public ResponseEntity<List<Poll>> getAllPolls() {
+		return ResponseEntity.ok(pollService.getAllPolls());
 	}
 	
-	@GetMapping("get-polls")
-	public ResponseEntity<List<Poll>> getPolls(){
+	@GetMapping("/get-polls")
+	public ResponseEntity<List<Poll>> getPolls() {
 		return ResponseEntity.ok(pollService.getPolls());
 	}
 }
