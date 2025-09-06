@@ -41,11 +41,10 @@ spring-boot-api/
 
 ## Poll API Documentation - API list
 
-## API: `/api/v1/users`
+**Endpoint:** `/api/v1/users`
 **Type:** `GET`  
 **Description:** Fetch all users  
-
-### Payload
+**Payload:** 
 <details>
   <summary>Click to expand</summary>
 
@@ -55,6 +54,20 @@ spring-boot-api/
   "limit": 10
 }
 ```
+
+</details>
+
+**Response:** 
+<details>
+  <summary>Click to expand</summary>
+
+```json
+{
+  "page": 1,
+  "limit": 10
+}
+```
+
 </details> 
 
 | Method | Path | Description | Sample Response |
