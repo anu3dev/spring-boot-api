@@ -41,10 +41,16 @@ spring-boot-api/
 
 ## Poll API Documentation - API list
 
+### Get All polls
+
 **Endpoint:** `/api/v1/users`
-**Type:** `GET`  
-**Description:** Fetch all users  
-**Payload:** 
+
+**Type:** `GET`
+
+**Description:** Fetch all users
+ 
+**Payload:**
+
 <details>
   <summary>Click to expand</summary>
 
@@ -57,7 +63,8 @@ spring-boot-api/
 
 </details>
 
-**Response:** 
+**Response:**
+
 <details>
   <summary>Click to expand</summary>
 
