@@ -39,9 +39,23 @@ spring-boot-api/
 
 ---
 
-## API list
+## Poll API Documentation - API list
 
-# Poll API Documentation
+## API: `/api/v1/users`
+**Type:** `GET`  
+**Description:** Fetch all users  
+
+### Payload
+<details>
+  <summary>Click to expand</summary>
+
+```json
+{
+  "page": 1,
+  "limit": 10
+}
+```
+</details> 
 
 | Method | Path | Description | Sample Response |
 |--------|------|-------------|----------------|

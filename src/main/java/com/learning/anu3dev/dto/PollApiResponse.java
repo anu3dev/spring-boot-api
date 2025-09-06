@@ -1,5 +1,6 @@
 package com.learning.anu3dev.dto;
 
+import java.util.Collections;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -8,26 +9,24 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+// @NoArgsConstructor → allows creating empty object: new PollResponse().
 @AllArgsConstructor
-public class PollApiResponse {
+// @AllArgsConstructor → allows creating full object: new PollResponse(200, true, "OK").
+public class PollApiResponse<T> {
     private int statusCode;
     private boolean success;
     private String successMessage;
     private boolean error;
     private String errorMessage;
-
-    // Wraps itself in a list
-    public List<PollApiResponse> asList() {
-        return List.of(this);
-    }
+    private List<T> data;
 
     // Factory method for success
-    public static PollApiResponse success(String message) {
-        return new PollApiResponse(200, true, message, false, "");
+    public static <T> PollApiResponse<T> success(String message, List<T> data) {
+        return new PollApiResponse<>(200, true, message, false, "", data);
     }
 
     // Factory method for failure
-    public static PollApiResponse failure(int statusCode, String message) {
-        return new PollApiResponse(statusCode, false, "", true, message);
+    public static <T> PollApiResponse<T> failure(int statusCode, String message) {
+        return new PollApiResponse<>(statusCode, false, "", true, message, Collections.emptyList());
     }
 }

@@ -23,18 +23,20 @@ public class PollController {
 	private PollService pollService;
 
 	@PostMapping("/add-polls")
-	public ResponseEntity<List<PollApiResponse>> addPolls(@RequestBody List<PollRequest> request) {
-		pollService.saveOrUpdatePolls(request);
-		return ResponseEntity.ok(PollApiResponse.success("Action successful").asList());
+	public ResponseEntity<PollApiResponse<Poll>> addPolls(@RequestBody List<PollRequest> request) {
+	    List<Poll> savedPolls = pollService.saveOrUpdatePolls(request);
+	    return ResponseEntity.ok(PollApiResponse.success("Action successful", savedPolls));
 	}
 
 	@GetMapping("/get-all-polls")
-	public ResponseEntity<List<Poll>> getAllPolls() {
-		return ResponseEntity.ok(pollService.getAllPolls());
+	public ResponseEntity<PollApiResponse<Poll>> getAllPolls() {
+		List<Poll> polls = pollService.getAllPolls();
+		return ResponseEntity.ok(PollApiResponse.success("Action successful", polls));
 	}
 	
 	@GetMapping("/get-polls")
-	public ResponseEntity<List<Poll>> getPolls() {
-		return ResponseEntity.ok(pollService.getPolls());
+	public ResponseEntity<PollApiResponse<Poll>> getPolls() {
+		List<Poll> polls = pollService.getPolls();
+		return ResponseEntity.ok(PollApiResponse.success("Action successful", polls));
 	}
 }
