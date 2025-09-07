@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.learning.anu3dev.dto.LoginResponse;
 import com.learning.anu3dev.dto.QuestionAnswer;
@@ -27,6 +28,7 @@ import com.learning.anu3dev.repository.UserRepo;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class PollAnswerService {
 	@Autowired
 	private PollResponseRepo pollResponseRepo;
