@@ -9,30 +9,40 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "poll_responses")
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)   // use only ID
+@ToString(onlyExplicitlyIncluded = true)            // don’t include relations
 public class PollResponse {
-	@EmbeddedId
-	private PollResponseId id;
-	
-	@ManyToOne
-	@MapsId("userId")
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
-	
-	@ManyToOne
-	@MapsId("questionId")
-	@JoinColumn(name = "question_id", nullable = false)
-	private PollQuestion question;
-	
-	@ManyToOne
-	@MapsId("optionId")
-	@JoinColumn(name = "option_id", nullable = false)
-	private QuestionOption option;
-	
-	@Column(name = "created_at", nullable = false)
-	private LocalDateTime createdAt = LocalDateTime.now();
+
+    @EmbeddedId
+    @EqualsAndHashCode.Include
+    @ToString.Include
+    private PollResponseId id;
+
+    @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @MapsId("questionId")
+    @JoinColumn(name = "question_id", nullable = false)
+    private PollQuestion question;
+
+    @ManyToOne
+    @MapsId("optionId")
+    @JoinColumn(name = "option_id", nullable = false)
+    private QuestionOption option;
+
+    @Column(name = "created_at", nullable = false)
+    @ToString.Include
+    private LocalDateTime createdAt = LocalDateTime.now();
 }

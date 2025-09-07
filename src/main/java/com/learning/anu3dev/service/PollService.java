@@ -1,23 +1,45 @@
 package com.learning.anu3dev.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.learning.anu3dev.dto.LoginRequest;
 import com.learning.anu3dev.dto.PollRequest;
 import com.learning.anu3dev.dto.QuestionRequest;
 import com.learning.anu3dev.model.Poll;
+import com.learning.anu3dev.model.User;
 import com.learning.anu3dev.model.PollQuestion;
 import com.learning.anu3dev.model.QuestionOption;
-import com.learning.anu3dev.repository.PollRepository;
+import com.learning.anu3dev.repository.PollRepo;
+import com.learning.anu3dev.repository.UserRepo;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class PollService {
 
 	@Autowired
-	private PollRepository pollRepo;
+	private PollRepo pollRepo;
+	@Autowired
+	private UserRepo userRepo;
+	
+	@Transactional
+	public List<Poll> loginAndFetchEligiblePolls(LoginRequest request){
+		User user = userRepo.findByEmail(request.getEmail())
+				.orElseGet(() -> {
+			User newUser = new User();
+			newUser.setEmail(request.getEmail());
+			return userRepo.save(newUser);
+		});
+		
+		List<Poll> activePolls = pollRepo.findByIsActiveTrueOrderByCreatedAtDesc();
+		System.out.println(activePolls +" "+ user);
+		return Collections.emptyList();
+	}
 
 	public List<Poll> saveOrUpdatePolls(List<PollRequest> pollRequests) {
 		List<Poll> savedPolls = new ArrayList<>();
@@ -65,10 +87,10 @@ public class PollService {
 					}
 
 					poll.getQuestions().add(pollQuestion);
+					
+					savedPolls.add(pollRepo.save(poll));
 				}
 			}
-
-			savedPolls.add(pollRepo.save(poll));
 		}
 
 		return savedPolls;

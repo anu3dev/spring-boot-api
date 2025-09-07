@@ -7,32 +7,32 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import com.learning.anu3dev.dto.PollApiResponse;
+import com.learning.anu3dev.dto.LoginResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity<PollApiResponse<Object>> handleMethodNotAllowed(HttpRequestMethodNotSupportedException ex) {
+    public ResponseEntity<LoginResponse<Object>> handleMethodNotAllowed(HttpRequestMethodNotSupportedException ex) {
         return ResponseEntity
         		.status(HttpStatus.METHOD_NOT_ALLOWED)
-                .body(PollApiResponse.failure(HttpStatus.METHOD_NOT_ALLOWED.value(),
+                .body(LoginResponse.failure(HttpStatus.METHOD_NOT_ALLOWED.value(),
                         "Invalid request method: " + ex.getMethod()));
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public ResponseEntity<PollApiResponse<Object>> handleNotFound(NoHandlerFoundException ex) {
+    public ResponseEntity<LoginResponse<Object>> handleNotFound(NoHandlerFoundException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body(PollApiResponse.failure(HttpStatus.NOT_FOUND.value(),
+                .body(LoginResponse.failure(HttpStatus.NOT_FOUND.value(),
                         "Endpoint not found: " + ex.getRequestURL()));
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<PollApiResponse<Object>> handleGenericException(Exception ex) {
+    public ResponseEntity<LoginResponse<Object>> handleGenericException(Exception ex) {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(PollApiResponse.failure(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                .body(LoginResponse.failure(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                         "Unexpected error: " + ex.getMessage()));
     }
 }

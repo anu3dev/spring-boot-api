@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 // @NoArgsConstructor → allows creating empty object: new PollResponse().
 @AllArgsConstructor
 // @AllArgsConstructor → allows creating full object: new PollResponse(200, true, "OK").
-public class PollApiResponse<T> {
+public class LoginResponse<T> {
     private int statusCode;
     private boolean success;
     private String successMessage;
@@ -21,12 +21,12 @@ public class PollApiResponse<T> {
     private List<T> data;
 
     // Factory method for success
-    public static <T> PollApiResponse<T> success(String message, List<T> data) {
-        return new PollApiResponse<>(200, true, message, false, "", data);
+    public static <T> LoginResponse<T> success(String message, List<T> data) {
+        return new LoginResponse<>(200, true, message, false, "", data);
     }
 
     // Factory method for failure
-    public static <T> PollApiResponse<T> failure(int statusCode, String message) {
-        return new PollApiResponse<>(statusCode, false, "", true, message, Collections.emptyList());
+    public static <T> LoginResponse<T> failure(int statusCode, String message) {
+        return new LoginResponse<>(statusCode, false, "", true, message, Collections.emptyList());
     }
 }

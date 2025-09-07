@@ -18,3 +18,14 @@ public class Application {
  * Spring automatically changes camelCase names into 
  * snake_case for database tables and columns.
  */
+
+/**
+ * @Data = @Getter + @Setter + @RequiredArgsConstructor + @ToString + @EqualsAndHashCode
+ * 
+ * @ToString → walks through all fields, including relationships → infinite recursion
+ * @EqualsAndHashCode → by default uses all fields, including relationships → infinite recursion
+ * 
+ * Rule of thumb:
+ * For entities with relations → avoid @Data.
+ * For simple DTOs without relations → @Data is perfectly fine.
+ */

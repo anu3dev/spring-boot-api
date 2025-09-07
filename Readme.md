@@ -43,13 +43,14 @@ spring-boot-api/
 
 ---
 
-### 1. Get All polls
+### 1. Add initial poll
 
-**Endpoint:** `/api/v1/users`
+**Endpoint:** `/poll/add-polls`
 
-**Type:** `GET`
+**Type:** `post`
 
-**Description:** Fetch all users
+**Description:** pollId is missing means it will create new poll, isActive is missing means poll won't be activated
+
  
 **Payload:**
 
@@ -57,10 +58,195 @@ spring-boot-api/
   <summary>Click to expand</summary>
 
 ```json
+[
+    {
+        "isActive": "true",
+        "pollTitle": "About programming",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which programming language do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Java",
+                    "Python",
+                    "JavaScript",
+                    "Go",
+                    "C#"
+                    ]
+            },
+            {
+                "questionTitle": "Which IDE do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "VSCode",
+                    "IntelliJ",
+                    "Eclipse",
+                    "Notepad++"
+                    ]
+            },
+            {
+                "questionTitle": "Which courses you want?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Java",
+                    "React",
+                    "TypeScript",
+                    ".Net"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "",
+        "pollTitle": "About yourself",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    }
+]
+```
+
+</details>
+
+**Response:**
+
+<details>
+  <summary>Click to expand</summary>
+
+```json
 {
   "page": 1,
-  "limit": 10
 }
+```
+
+</details>
+
+---
+
+### 2. Add questions to existing poll
+
+**Endpoint:** `/poll/add-polls`
+
+**Type:** `post`
+
+**Description:** pollId is present then will add questions against mentioned poll, if pollId is present and question is new then only questions will be added else it will be ignored, questions with null title value will be ignored
+
+ 
+**Payload:**
+
+<details>
+  <summary>Click to expand</summary>
+
+```json
+[
+    {
+        "isActive": "true",
+        "pollTitle": "About programming",
+        "pollId" : 1,
+        "questions": [
+            {
+                "questionTitle": "Which programming language do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Java",
+                    "Python",
+                    "JavaScript",
+                    "Go",
+                    "C#"
+                    ]
+            },
+            {
+                "questionTitle": "Which IDE do you like the most?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "VSCode",
+                    "IntelliJ",
+                    "Eclipse",
+                    "Notepad++"
+                    ]
+            },
+            {
+                "questionTitle": "Which courses you want?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Java",
+                    "React",
+                    "TypeScript",
+                    ".Net"
+                    ]
+            },
+            {
+                "questionTitle": "Your total experience?",
+                "isActive": false,
+                "isMultiSelect": false,
+                "options": [
+                    "0 - 2",
+                    "2 - 5",
+                    "5 - 10",
+                    "More than 10"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "true",
+        "pollTitle": "About yourself",
+        "pollId" : 2,
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    }
+]
 ```
 
 </details>
@@ -81,13 +267,14 @@ spring-boot-api/
 
 ---
 
-### 2. Get polls
+### 3. Add new poll
 
-**Endpoint:** `/api/v1/users`
+**Endpoint:** `/poll/add-polls`
 
-**Type:** `GET`
+**Type:** `post`
 
-**Description:** Fetch all users
+**Description:** Just add a poll without pollId, it will create new poll
+
  
 **Payload:**
 
@@ -95,10 +282,55 @@ spring-boot-api/
   <summary>Click to expand</summary>
 
 ```json
-{
-  "page": 1,
-  "limit": 10
-}
+[
+    {
+        "isActive": "",
+        "pollTitle": "About yourself",
+        "pollId" : 2,
+        "questions": [
+            {
+                "questionTitle": "Which city you belong?",
+                "isActive": true,
+                "isMultiSelect": false,
+                "options": [
+                    "Patna",
+                    "Pune",
+                    "Noida",
+                    "Chennai"
+                    ]
+            },
+            {
+                "questionTitle": "Which location you can join?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Mumbai",
+                    "Ranchi",
+                    "Kolkata",
+                    "Bhuvneshwar"
+                    ]
+            }
+        ]
+    },
+    {
+        "isActive": "true",
+        "pollTitle": "Your food",
+        "pollId" : "",
+        "questions": [
+            {
+                "questionTitle": "Which food you like most?",
+                "isActive": true,
+                "isMultiSelect": true,
+                "options": [
+                    "Pizza",
+                    "Burger",
+                    "Paani puri",
+                    "Chaat"
+                    ]
+            }
+        ]
+    }
+]
 ```
 
 </details>

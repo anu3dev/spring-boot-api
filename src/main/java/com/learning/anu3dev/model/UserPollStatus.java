@@ -9,26 +9,39 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
 @Entity
+@Table(name = "user_poll_status")
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)   // use only ID
+@ToString(onlyExplicitlyIncluded = true)            // avoid looping
 public class UserPollStatus {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
-	
-	@ManyToOne
-	@JoinColumn(name = "poll_id", nullable = false)
-	private Poll poll;
-	
-	@Column(nullable = false)
-	private boolean completed;
-	
-	@Column(name="completed_at")
-	private LocalDateTime completedAt;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @ToString.Include
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "poll_id", nullable = false)
+    private Poll poll;
+
+    @Column(nullable = false)
+    @ToString.Include
+    private boolean completed;
+
+    @Column(name = "completed_at")
+    @ToString.Include
+    private LocalDateTime completedAt;
 }
