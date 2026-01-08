@@ -70,13 +70,13 @@ public class OpenAiApiService {
         historyUser.setSessionId(req.getSessionId());
         historyUser.setRole("user");
         historyUser.setContent(req.getQuery());
-        //openAiApiRepo.save(historyUser);
+        openAiApiRepo.save(historyUser);
 
         OpenAiApiHistory historyResp = new OpenAiApiHistory();
         historyResp.setSessionId(req.getSessionId());
         historyResp.setRole("assistant");
         historyResp.setContent(currentResp);
-        //openAiApiRepo.save(historyResp);
+        openAiApiRepo.save(historyResp);
 
         return currentResp;
     }
