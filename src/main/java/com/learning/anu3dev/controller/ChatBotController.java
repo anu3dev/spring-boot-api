@@ -12,7 +12,7 @@ public class ChatBotController {
     @Autowired
     public OpenAiApiService chatBotService;
 
-    @PostMapping("v1")
+    @PostMapping("/v1")
     public String chatBotResponse(@RequestBody OpenAiApiPostRequest req){
         return chatBotService.getChatBotResponse(req);
     }
