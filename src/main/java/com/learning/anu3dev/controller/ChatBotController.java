@@ -5,6 +5,10 @@ import com.learning.anu3dev.service.OpenAiApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://e2eonline.com"
+})
 @RestController
 @RequestMapping("chatbot")
 public class ChatBotController {
